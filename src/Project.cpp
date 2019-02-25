@@ -2548,29 +2548,29 @@ void AudacityProject::OnCloseWindow(wxCloseEvent & event)
 
    // We may not bother to prompt the user to save, if the
    // project is now empty.
-   if (event.CanVeto() && (mEmptyCanBeDirty || bHasTracks)) {
-      if (GetUndoManager()->UnsavedChanges()) {
-         TitleRestorer Restorer( this );// RAII
-         /* i18n-hint: The first %s numbers the project, the second %s is the project name.*/
-         wxString Title =  wxString::Format(_("%sSave changes to %s?"), Restorer.sProjNumber, Restorer.sProjName);
-         wxString Message = _("Save project before closing?");
-         if( !bHasTracks )
-         {
-          Message += _("\nIf saved, the project will have no tracks.\n\nTo save any previously open tracks:\nCancel, Edit > Undo until all tracks\nare open, then File > Save Project.");
-         }
-         int result = AudacityMessageBox( Message,
-                                    Title,
-                                   wxYES_NO | wxCANCEL | wxICON_QUESTION,
-                                   this);
+   //if (event.CanVeto() && (mEmptyCanBeDirty || bHasTracks)) {
+   //   if (GetUndoManager()->UnsavedChanges()) {
+   //      TitleRestorer Restorer( this );// RAII
+   //      /* i18n-hint: The first %s numbers the project, the second %s is the project name.*/
+   //      wxString Title =  wxString::Format(_("%sSave changes to %s?"), Restorer.sProjNumber, Restorer.sProjName);
+   //      wxString Message = _("Save project before closing?");
+   //      if( !bHasTracks )
+   //      {
+   //       Message += _("\nIf saved, the project will have no tracks.\n\nTo save any previously open tracks:\nCancel, Edit > Undo until all tracks\nare open, then File > Save Project.");
+   //      }
+   //      int result = AudacityMessageBox( Message,
+   //                                 Title,
+   //                                wxYES_NO | wxCANCEL | wxICON_QUESTION,
+   //                                this);
 
-         if (result == wxCANCEL || (result == wxYES &&
-              !GuardedCall<bool>( [&]{ return Save(); } )
-         )) {
-            event.Veto();
-            return;
-         }
-      }
-   }
+   //      if (result == wxCANCEL || (result == wxYES &&
+   //           !GuardedCall<bool>( [&]{ return Save(); } )
+   //      )) {
+   //         event.Veto();
+   //         return;
+   //      }
+   //   }
+   //}
 
 #ifdef __WXMAC__
    // Fix bug apparently introduced into 2.1.2 because of wxWidgets 3:

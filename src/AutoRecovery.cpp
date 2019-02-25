@@ -168,7 +168,8 @@ static bool HaveFilesToRecover()
    wxString filename;
    bool c = dir.GetFirst(&filename, wxT("*.autosave"), wxDIR_FILES);
 
-   return c;
+   return false;
+   //return c;
 }
 
 static bool RemoveAllAutoSaveFiles()
